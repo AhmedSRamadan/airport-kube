@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: airport-port
+spec:
+  ports:
+  - port: 8000
+    nodePort: 31002
+    targetPort: airport-port
+    protocol: TCP
+  selector:
+    app: airport-port
+  type: NodePort
+

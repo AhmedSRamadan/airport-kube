@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: country-port
+spec:
+  ports:
+  - port: 8000
+    nodePort: 31003
+    targetPort: country-port
+    protocol: TCP
+  selector:
+    app: country-port
+  type: NodePort
+

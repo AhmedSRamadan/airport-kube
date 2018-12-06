@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: country
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: country
+    spec:
+      containers:
+      - name: country
+        image: gcr.io/responsive-sun-223918/country
+        ports:
+        - name: service1-port
+          containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /
+            port: country-port
+          initialDelaySeconds: 160
+          timeoutSeconds: 60
+
